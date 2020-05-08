@@ -1,0 +1,24 @@
+{
+  "name": "Google Meet Auto Disable Camera",
+  "version": "1.0.0",
+  "description": "Defaults camera to disabled when joining a Google Meet meeting",
+  "manifest_version": 2,
+  "permissions": [],
+  "content_scripts": [
+    {
+      "js": [
+        "content.js"
+      ],
+      "matches": [
+        "https://meet.google.com/*"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "icons": {
+    "16": "icon/icon16.png",
+    "48": "icon/icon48.png",
+    "128": "icon/icon128.png"
+  },
+  "browser_action": {}
+}

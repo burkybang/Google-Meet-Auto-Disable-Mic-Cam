@@ -1,9 +1,11 @@
 {
-  "name": "Google Meet Auto Disable Camera",
-  "version": "1.0.4",
-  "description": "Defaults camera to disabled when joining a Google Meet meeting",
+  "name": "Google Meet Auto Disable Mic/Cam",
+  "version": "1.1.0",
+  "description": "Provides options for defaulting microphone and/or camera to disabled when joining a Google Meet meeting",
   "manifest_version": 2,
-  "permissions": [],
+  "permissions": [
+    "storage"
+  ],
   "content_scripts": [
     {
       "js": [

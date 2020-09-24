@@ -48,7 +48,7 @@ Promise.all([
   buttons.forEach(({label, storageName, buttonKey, direction}) => {
     
     /** @type {HTMLDivElement} */
-    const button = document.querySelector(`div[role="button"][aria-label$=" + ${buttonKey})"][data-is-muted]`);
+    const button = document.querySelector(`div[role="button"][aria-label$=" + ${buttonKey})" i][data-is-muted]`);
     if (!button) return;
     
     /** @type {boolean} */

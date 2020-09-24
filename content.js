@@ -20,7 +20,7 @@ Promise.all([
   settingsLoaded,
   windowLoaded,
 ]).then(([/**Settings*/settings = {}]) => {
-  Object.assign(settings, defaultSettings);
+  settings = {...defaultSettings, ...settings};
   
   /**
    * @type {{

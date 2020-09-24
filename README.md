@@ -2,7 +2,7 @@
 
 ## Description [<img src="https://raw.githubusercontent.com/burkybang/Google-Meet-Auto-Disable-Camera/master/icon/icon128.png" align="right" width="128" height="128"/>](https://chrome.google.com/webstore/detail/dgggcpmnponfpgnifbdohajbdkbgjlhd)
 
-This simple extension ensures your camera defaults to the disabled state, so you don't accidentally show everyone that you're working in your jammies.
+This simple extension provides options to default your microphone and/or camera to disabled.
 
 ## Download
 

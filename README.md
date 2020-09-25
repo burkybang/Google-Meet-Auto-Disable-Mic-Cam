@@ -8,6 +8,8 @@ This simple extension provides options to default your microphone and/or camera 
 
 [![Google Chrome](https://github.com/burkybang/burkybang/raw/master/Images/chrome-web-store.png "Google Chrome")](https://chrome.google.com/webstore/detail/dgggcpmnponfpgnifbdohajbdkbgjlhd)
 
+![User Count](https://smithsdownunder.com/get_chrome_extension_users/?id=dgggcpmnponfpgnifbdohajbdkbgjlhd&output=img "User Count")
+
 ## Author
 
 ![GitHub](https://github.com/burkybang/burkybang/raw/master/Images/github16.png "GitHub") [burkybang](https://github.com/burkybang)  

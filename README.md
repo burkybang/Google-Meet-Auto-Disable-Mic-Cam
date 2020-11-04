@@ -2,7 +2,7 @@
 
 [![Repo Watchers](https://img.shields.io/github/watchers/burkybang/Google-Meet-Auto-Disable-Mic-Cam?style=social)](../../watchers)
 [![Repo Stars](https://img.shields.io/github/stars/burkybang/Google-Meet-Auto-Disable-Mic-Cam?style=social)](../../stargazers)
-![License](https://img.shields.io/github/license/burkybang/Google-Meet-Auto-Disable-Mic-Cam?logo=github)
+[![License](https://img.shields.io/github/license/burkybang/Google-Meet-Auto-Disable-Mic-Cam?logo=github)](LICENSE)
 
 ## Description [<img src="https://raw.githubusercontent.com/burkybang/Google-Meet-Auto-Disable-Camera/master/icon/icon128.png" align="right" width="128" height="128"/>](https://chrome.google.com/webstore/detail/dgggcpmnponfpgnifbdohajbdkbgjlhd)
 

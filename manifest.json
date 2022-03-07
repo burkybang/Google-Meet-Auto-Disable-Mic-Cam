@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "description": "Provides options for defaulting microphone and/or camera to disabled when joining a Google Meet meeting",
   "manifest_version": 3,
-  "host_permissions": [
+  "permissions": [
     "storage"
   ],
   "content_scripts": [
@@ -22,5 +22,5 @@
     "48": "icon/icon48.png",
     "128": "icon/icon128.png"
   },
-  "browser_action": {}
+  "action": {}
 }

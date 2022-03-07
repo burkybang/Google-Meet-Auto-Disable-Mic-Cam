@@ -1,0 +1,11 @@
+{
+  "name": "google-meet-auto-disable-camera",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/burkybang/Google-Meet-Auto-Disable-Mic-Cam.git"
+  },
+  "author": "burkybang",
+  "dependencies": {
+    "@types/chrome": "^0.0.179"
+  }
+}

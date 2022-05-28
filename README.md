@@ -9,7 +9,7 @@
 This simple extension provides options to default your microphone and/or camera to disabled.
 
 ![Chrome Extension Version](https://img.shields.io/chrome-web-store/v/dgggcpmnponfpgnifbdohajbdkbgjlhd?label=version&logo=google-chrome&logoColor=ffce43)
-![Chrome Extension Users](https://img.shields.io/chrome-web-store/users/dgggcpmnponfpgnifbdohajbdkbgjlhd?&logo=google-chrome&logoColor=ffce43)
+![Chrome Extension Users](https://img.shields.io/endpoint?url=https%3A%2F%2Fburkybang.com%2Fchrome_extension_users%2F%3Faction%3Dget%26id%3Ddgggcpmnponfpgnifbdohajbdkbgjlhd%26output%3Dshields-io%26number-only%3D1&logoColor=ffce43)
 ![Chrome Extension Rating](https://img.shields.io/chrome-web-store/stars/dgggcpmnponfpgnifbdohajbdkbgjlhd?logo=google-chrome&logoColor=ffce43)
 
 ## Download

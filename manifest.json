@@ -9,6 +9,7 @@
   "content_scripts": [
     {
       "js": [
+        "lib.js",
         "content.js"
       ],
       "matches": [
@@ -22,5 +23,7 @@
     "48": "icon/icon48.png",
     "128": "icon/icon128.png"
   },
-  "action": {}
+  "action": {
+    "default_popup": "popup.html"
+  }
 }

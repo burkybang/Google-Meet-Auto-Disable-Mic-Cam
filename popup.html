@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:500">
+  <style>
+    body {
+      margin: 0;
+      font-size: 0.875rem;
+      font-family: Roboto, Arial, sans-serif;
+      font-weight: 500;
+      letter-spacing: .01785714em;
+      color: #202124;
+    }
+
+    #logo {
+      padding: 0.3rem 1rem 0.1rem 1rem;
+      background-color: #e8eaed;
+    }
+
+    svg {
+      height: 2rem;
+      width: auto;
+    }
+
+    #toggles {
+      padding: 0.25rem 0.5rem;
+    }
+
+    label {
+      display: block;
+      cursor: pointer;
+      white-space: nowrap;
+      margin: 0.5rem;
+    }
+
+    input[type="checkbox"] {
+      cursor: pointer;
+      position: relative;
+      top: 1px;
+      margin-right: 0.5rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #141416;
+        color: #dfdedb;
+      }
+
+      #logo {
+        background-color: #202124;
+      }
+
+      svg > path:first-child {
+        fill: #dfdedb;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="logo"></div>
+<div id="toggles"></div>
+
+<script src="lib.js"></script>
+<script src="popup.js"></script>
+
+</body>
+</html>

@@ -6,6 +6,6 @@
   },
   "author": "burkybang",
   "dependencies": {
-    "@types/chrome": "^0.0.179"
+    "@types/chrome": "^0.0.195"
   }
 }

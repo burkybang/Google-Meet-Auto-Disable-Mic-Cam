@@ -10,6 +10,13 @@ const defaultSettings: Settings = {
   disableCam: true,
 };
 
+declare var browser: typeof chrome;
+
+// For Firefox support
+if (typeof browser !== 'undefined')
+  // @ts-ignore
+  chrome = browser;
+
 let settings: Settings;
 
 const settingsLoaded: Promise<Settings> = (chrome.storage.sync.get() as Promise<Settings>)

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "ESNext",
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "types": [
+      "node"
+    ]
+  },
+  "files": [
+    "switch-manifest.ts"
+  ]
+}

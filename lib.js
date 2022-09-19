@@ -3,6 +3,8 @@ const defaultSettings = {
     disableMic: false,
     disableCam: true,
 };
+if (typeof browser !== 'undefined')
+    chrome = browser;
 let settings;
 const settingsLoaded = chrome.storage.sync.get()
     .then(storageSettings => settings = ({ ...defaultSettings, ...storageSettings }));

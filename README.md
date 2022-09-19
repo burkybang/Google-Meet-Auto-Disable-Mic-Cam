@@ -6,7 +6,7 @@
 
 ## Description [<img src="https://raw.githubusercontent.com/burkybang/Google-Meet-Auto-Disable-Camera/master/icon/icon128.png" align="right" width="128" height="128"/>](https://chrome.google.com/webstore/detail/dgggcpmnponfpgnifbdohajbdkbgjlhd)
 
-This simple extension provides options to default your microphone and/or camera to disabled.
+This simple extension provides options to default your microphone and camera to disabled.
 
 ![Chrome Extension Version](https://img.shields.io/chrome-web-store/v/dgggcpmnponfpgnifbdohajbdkbgjlhd?label=version&logo=google-chrome&logoColor=ffce43)
 ![Chrome Extension Users](https://img.shields.io/endpoint?url=https%3A%2F%2Fburkybang.com%2Fchrome_extension_users%2F%3Faction%3Dget%26id%3Ddgggcpmnponfpgnifbdohajbdkbgjlhd%26output%3Dshields-io%26number-only%3D1&logoColor=ffce43)
@@ -15,13 +15,18 @@ This simple extension provides options to default your microphone and/or camera 
 ## Download
 
 [![Google Chrome](https://github.com/burkybang/burkybang/raw/master/Images/chrome-web-store.png "Google Chrome")](https://chrome.google.com/webstore/detail/dgggcpmnponfpgnifbdohajbdkbgjlhd)
+[![Mozilla Firefox](https://github.com/burkybang/burkybang/raw/master/Images/firefox-add-on.png "Mozilla Firefox")](https://addons.mozilla.org/en-US/firefox/addon/googlemeet-auto-disable-miccam)
 
 ## Author
 
 ![GitHub](https://github.com/burkybang/burkybang/raw/master/Images/github16.png "GitHub") [burkybang](https://github.com/burkybang)  
+![Discord](https://github.com/burkybang/burkybang/raw/master/Images/discord16.png "Discord") [u/burkybang](https://discord.gg/3jtUftjuP7)  
 ![Reddit](https://github.com/burkybang/burkybang/raw/master/Images/reddit16.png "Reddit") [u/burkybang](https://reddit.com/u/burkybang)  
-![Twitter](https://github.com/burkybang/burkybang/raw/master/Images/twitter16.png "Twitter") [@burkybang](https://twitter.com/burkybang)
+![Twitter](https://github.com/burkybang/burkybang/raw/master/Images/twitter16.png "Twitter") [@burkybang](https://twitter.com/burkybang)  
+![YouTube](https://github.com/burkybang/burkybang/raw/master/Images/youtube16.png "YouTube") [burkybang](https://youtube.com/burkybang)
 
-## Screenshot
+## Screenshots
 
-![Screenshot](image/Marquee%20Promo%20Tile.png "Screenshot")
+![Screenshot1](image/Marquee%20Promo%20Tile.png "Screenshot")
+
+![Screenshot2](image/Screenshot2.png "Screenshot")

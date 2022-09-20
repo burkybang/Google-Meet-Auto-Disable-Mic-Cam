@@ -1,3 +1,10 @@
+declare var browser: typeof chrome;
+
+// For Firefox support
+if (typeof browser !== 'undefined')
+  // @ts-ignore
+  chrome = browser;
+
 const windowLoaded: Promise<void> = new Promise(resolve => window.onload = () => resolve());
 
 interface Settings {
@@ -9,13 +16,6 @@ const defaultSettings: Settings = {
   disableMic: false,
   disableCam: true,
 };
-
-declare var browser: typeof chrome;
-
-// For Firefox support
-if (typeof browser !== 'undefined')
-  // @ts-ignore
-  chrome = browser;
 
 let settings: Settings;
 

@@ -12,6 +12,10 @@ This simple extension provides options to default your microphone and camera to 
 ![Chrome Extension Users](https://img.shields.io/endpoint?url=https%3A%2F%2Fburkybang.com%2Fchrome_extension_users%2F%3Faction%3Dget%26id%3Ddgggcpmnponfpgnifbdohajbdkbgjlhd%26output%3Dshields-io%26number-only%3D1&logoColor=ffce43)
 ![Chrome Extension Rating](https://img.shields.io/chrome-web-store/stars/dgggcpmnponfpgnifbdohajbdkbgjlhd?logo=google-chrome&logoColor=ffce43)
 
+![Mozilla Firefox Version](https://img.shields.io/amo/v/googlemeet-auto-disable-miccam?label=version&logo=firefox-browser)
+![Mozilla Firefox Users](https://img.shields.io/amo/users/googlemeet-auto-disable-miccam?logo=firefox-browser&color=orange)
+![Mozilla Firefox Rating](https://img.shields.io/amo/stars/googlemeet-auto-disable-miccam?label=rating&logo=firefox-browser)
+
 ## Download
 
 [![Google Chrome](https://github.com/burkybang/burkybang/raw/master/Images/chrome-web-store.png "Google Chrome")](https://chrome.google.com/webstore/detail/dgggcpmnponfpgnifbdohajbdkbgjlhd)

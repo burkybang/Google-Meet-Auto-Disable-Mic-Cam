@@ -63,7 +63,7 @@ class Toggle {
     return this.#labelEl = labelEl;
   }
   
-  set labelStyle(style: Record<string, string>) {
+  set labelStyle(style: Partial<CSSStyleDeclaration>) {
     Object.assign(this.labelEl.style, style);
   }
   
@@ -85,7 +85,7 @@ class Toggle {
     return this.#checkboxEl = checkboxEl;
   }
   
-  set checkboxStyle(style: Record<string, string>) {
+  set checkboxStyle(style: Partial<CSSStyleDeclaration>) {
     Object.assign(this.checkboxEl.style, style);
   }
   

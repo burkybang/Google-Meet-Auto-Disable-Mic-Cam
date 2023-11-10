@@ -5,6 +5,7 @@
     "baseUrl": "./",
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
+    "skipLibCheck": true,
     "paths": {
       "@types/*": [
         "node_modules/@types/*"

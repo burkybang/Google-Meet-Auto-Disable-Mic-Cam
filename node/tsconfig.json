@@ -4,6 +4,7 @@
     "target": "ESNext",
     "removeComments": true,
     "resolveJsonModule": true,
+    "skipLibCheck": true,
     "types": [
       "node"
     ]

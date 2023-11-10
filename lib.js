@@ -13,6 +13,7 @@ class Toggle {
     storageName;
     key;
     direction;
+    emoji;
     autoDisable;
     buttonEl;
     #labelEl;
@@ -58,6 +59,9 @@ class Toggle {
         spanEl.innerText = `Auto Disable ${this.label}`;
         return this.#spanEl = spanEl;
     }
+    get buttonEnabled() {
+        return this.buttonEl.dataset.isMuted === 'true';
+    }
     onChange(callback) {
         this.#onChange = callback;
     }
@@ -76,14 +80,16 @@ class Toggle {
 const createToggles = () => Object.fromEntries([
     {
         label: 'Microphone',
-        storageName: 'disableMic',
+        storageName: "disableMic",
         key: 'd',
         direction: "right",
+        emoji: "\uD83D\uDD07",
     },
     {
         label: 'Camera',
-        storageName: 'disableCam',
+        storageName: "disableCam",
         key: 'e',
         direction: "left",
+        emoji: "\uD83D\uDCF7",
     },
 ].map(options => [options.storageName, new Toggle(options)]));

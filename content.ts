@@ -2,7 +2,7 @@ Promise.all([
   settingsLoaded,
   windowLoaded,
 ]).then(async (): Promise<void> => {
-  const togglesObj: Record<string, Toggle> = createToggles();
+  const togglesObj: Record<ToggleStorageName, Toggle> = createToggles();
   const toggles: Toggle[] = Object.values(togglesObj);
   
   await new Promise<void>(resolve => {
@@ -60,4 +60,16 @@ Promise.all([
       changes => Object.entries(changes)
         .forEach(([storageName, {newValue}]) => togglesObj[storageName].checked = newValue),
     );
+  
+  const originalPageTitle: string = document.title;
+  
+  const observeButtons = () => document.title =
+    (togglesObj.disableMic.buttonEnabled ? `${togglesObj.disableMic.emoji} ` : '') +
+    (togglesObj.disableCam.buttonEnabled ? '' : `${togglesObj.disableCam.emoji} `) +
+    originalPageTitle;
+  
+  observeButtons();
+  
+  const buttonObserver = new MutationObserver(observeButtons);
+  toggles.forEach(toggle => buttonObserver.observe(toggle.buttonEl, {attributes: true}));
 });

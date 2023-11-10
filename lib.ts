@@ -27,20 +27,32 @@ const enum ToggleDirection {
   RIGHT = 'right',
 }
 
+const enum ToggleStorageName {
+  MIC = 'disableMic',
+  CAM = 'disableCam',
+}
+
+const enum ToggleEmoji {
+  MIC = '🔇',
+  CAM = '📷',
+}
+
 interface ToggleOptions {
   label: string;
-  storageName: string;
+  storageName: ToggleStorageName;
   key: string;
   direction: ToggleDirection;
+  emoji: ToggleEmoji;
 }
 
 type ToggleOnChangeCallback = (callback: HTMLInputElement) => void
 
 class Toggle {
   label: string;
-  storageName: string;
+  storageName: ToggleStorageName;
   key: string;
   direction: ToggleDirection;
+  emoji: ToggleEmoji;
   autoDisable: boolean;
   buttonEl: HTMLDivElement;
   #labelEl: HTMLLabelElement;
@@ -98,6 +110,10 @@ class Toggle {
     return this.#spanEl = spanEl;
   }
   
+  get buttonEnabled(): boolean {
+    return this.buttonEl.dataset.isMuted === 'true';
+  }
+  
   onChange(callback: ToggleOnChangeCallback): void {
     this.#onChange = callback;
   }
@@ -115,17 +131,19 @@ class Toggle {
   }
 }
 
-const createToggles = () => Object.fromEntries(([
+const createToggles = () => <Record<ToggleStorageName, Toggle>>Object.fromEntries(([
   {
     label: 'Microphone',
-    storageName: 'disableMic',
+    storageName: ToggleStorageName.MIC,
     key: 'd',
     direction: ToggleDirection.RIGHT,
+    emoji: ToggleEmoji.MIC,
   },
   {
     label: 'Camera',
-    storageName: 'disableCam',
+    storageName: ToggleStorageName.CAM,
     key: 'e',
     direction: ToggleDirection.LEFT,
+    emoji: ToggleEmoji.CAM,
   },
 ] as ToggleOptions[]).map(options => [options.storageName, new Toggle(options)]));

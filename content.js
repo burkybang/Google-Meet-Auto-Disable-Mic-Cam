@@ -47,4 +47,12 @@ Promise.all([
     if (preMeetingToggles.length)
         chrome.storage.sync.onChanged.addListener(changes => Object.entries(changes)
             .forEach(([storageName, { newValue }]) => togglesObj[storageName].checked = newValue));
+    const originalPageTitle = document.title;
+    const observeButtons = () => document.title =
+        (togglesObj.disableMic.buttonEnabled ? `${togglesObj.disableMic.emoji} ` : '') +
+            (togglesObj.disableCam.buttonEnabled ? '' : `${togglesObj.disableCam.emoji} `) +
+            originalPageTitle;
+    observeButtons();
+    const buttonObserver = new MutationObserver(observeButtons);
+    toggles.forEach(toggle => buttonObserver.observe(toggle.buttonEl, { attributes: true }));
 });

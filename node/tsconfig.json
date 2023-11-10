@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
+    "module": "NodeNext",
     "target": "ESNext",
     "removeComments": true,
     "resolveJsonModule": true,

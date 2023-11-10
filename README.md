@@ -6,15 +6,16 @@
 
 ## Description [<img src="https://raw.githubusercontent.com/burkybang/Google-Meet-Auto-Disable-Camera/master/icon/icon128.png" align="right" width="128" height="128"/>](https://chrome.google.com/webstore/detail/dgggcpmnponfpgnifbdohajbdkbgjlhd)
 
-This simple extension provides options to default your microphone and camera to disabled.
+This simple extension provides options to default your microphone and camera to disabled. It also displays emojis in the tab title
+indicating if your microphone is muted or you camera is on.
 
-![Chrome Extension Version](https://img.shields.io/chrome-web-store/v/dgggcpmnponfpgnifbdohajbdkbgjlhd?label=version&logo=google-chrome&logoColor=ffce43)
-![Chrome Extension Users](https://img.shields.io/endpoint?url=https%3A%2F%2Fburkybang.com%2Fchrome_extension_users%2F%3Faction%3Dget%26id%3Ddgggcpmnponfpgnifbdohajbdkbgjlhd%26output%3Dshields-io%26number-only%3D1&logoColor=ffce43)
-![Chrome Extension Rating](https://img.shields.io/chrome-web-store/stars/dgggcpmnponfpgnifbdohajbdkbgjlhd?logo=google-chrome&logoColor=ffce43)
+[![Chrome Extension Version](https://img.shields.io/chrome-web-store/v/dgggcpmnponfpgnifbdohajbdkbgjlhd?label=version&logo=google-chrome&logoColor=ffce43)](https://chrome.google.com/webstore/detail/dgggcpmnponfpgnifbdohajbdkbgjlhd)
+[![Chrome Extension Users](https://img.shields.io/endpoint?url=https%3A%2F%2Fburkybang.com%2Fchrome_extension_users%2F%3Faction%3Dget%26id%3Ddgggcpmnponfpgnifbdohajbdkbgjlhd%26output%3Dshields-io%26number-only%3D1&logoColor=ffce43)](https://chrome.google.com/webstore/detail/dgggcpmnponfpgnifbdohajbdkbgjlhd)
+[![Chrome Extension Rating](https://img.shields.io/chrome-web-store/stars/dgggcpmnponfpgnifbdohajbdkbgjlhd?logo=google-chrome&logoColor=ffce43)](https://chromewebstore.google.com/detail/dgggcpmnponfpgnifbdohajbdkbgjlhd/reviews)
 
-![Mozilla Firefox Version](https://img.shields.io/amo/v/googlemeet-auto-disable-miccam?label=version&logo=firefox-browser)
-![Mozilla Firefox Users](https://img.shields.io/amo/users/googlemeet-auto-disable-miccam?logo=firefox-browser&color=orange)
-![Mozilla Firefox Rating](https://img.shields.io/amo/stars/googlemeet-auto-disable-miccam?label=rating&logo=firefox-browser)
+[![Mozilla Firefox Version](https://img.shields.io/amo/v/googlemeet-auto-disable-miccam?label=version&logo=firefox-browser)](https://addons.mozilla.org/en-US/firefox/addon/googlemeet-auto-disable-miccam)
+[![Mozilla Firefox Users](https://img.shields.io/amo/users/googlemeet-auto-disable-miccam?logo=firefox-browser&color=orange)](https://addons.mozilla.org/en-US/firefox/addon/googlemeet-auto-disable-miccam)
+[![Mozilla Firefox Rating](https://img.shields.io/amo/stars/googlemeet-auto-disable-miccam?label=rating&logo=firefox-browser)](https://addons.mozilla.org/en-US/firefox/addon/googlemeet-auto-disable-miccam/reviews)
 
 ## Download
 
@@ -29,7 +30,6 @@ This simple extension provides options to default your microphone and camera to 
 ![LinkedIn](https://github.com/burkybang/burkybang/raw/master/Images/linkedin16.png "LinkedIn") [burkybang](https://linkedin.com/in/burkybang "LinkedIn")  
 ![YouTube](https://github.com/burkybang/burkybang/raw/master/Images/youtube16.png "YouTube") [burkybang](https://youtube.com/burkybang "YouTube")  
 ![Mastodon](https://github.com/burkybang/burkybang/raw/master/Images/mastodon16.png "Mastodon") [burkybang](https://mastodon.social/@burkybang "Mastodon")  
-![Squabbles](https://github.com/burkybang/burkybang/raw/master/Images/squabbles16.png "Squabbles") [burkybang](https://squabbles.io/u/burkybang "Squabbles")  
 ![Twitter](https://github.com/burkybang/burkybang/raw/master/Images/twitter16.png "Twitter") [burkybang](https://twitter.com/burkybang "Twitter")  
 ![Reddit](https://github.com/burkybang/burkybang/raw/master/Images/reddit16.png "Reddit") [burkybang](https://reddit.com/u/burkybang "Reddit")
 
@@ -38,3 +38,5 @@ This simple extension provides options to default your microphone and camera to 
 ![Screenshot1](image/Marquee%20Promo%20Tile.png "Screenshot")
 
 ![Screenshot2](image/Screenshot2.png "Screenshot")
+
+![Screenshot3](image/Screenshot3.png "Screenshot")

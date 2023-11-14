@@ -7,14 +7,16 @@ if (typeof browser !== 'undefined')
 
 const windowLoaded: Promise<void> = new Promise(resolve => window.onload = () => resolve());
 
-interface Settings {
-  disableMic: boolean;
-  disableCam: boolean;
+const enum ToggleStorageName {
+  MIC = 'disableMic',
+  CAM = 'disableCam',
 }
 
+type Settings = Record<ToggleStorageName, boolean>;
+
 const defaultSettings: Settings = {
-  disableMic: false,
-  disableCam: true,
+  [ToggleStorageName.MIC]: false,
+  [ToggleStorageName.CAM]: true,
 };
 
 let settings: Settings;
@@ -27,25 +29,28 @@ const enum ToggleDirection {
   RIGHT = 'right',
 }
 
-const enum ToggleStorageName {
-  MIC = 'disableMic',
-  CAM = 'disableCam',
-}
-
 const enum ToggleEmoji {
   MIC = '🔇',
   CAM = '📷',
 }
 
-interface ToggleOptions {
+type ToggleOptions = {
   label: string;
   storageName: ToggleStorageName;
   key: string;
   direction: ToggleDirection;
   emoji: ToggleEmoji;
-}
+};
 
-type ToggleOnChangeCallback = (callback: HTMLInputElement) => void
+type ToggleOnChangeCallback = (callback: HTMLInputElement) => void;
+
+type ExcludeMatchingProperties<TObject, TValue> = Pick<TObject, {
+  [K in keyof TObject]-?: TObject[K] extends TValue ? never : K;
+}[keyof TObject]>;
+
+type ExcludeMethods<TObject> = ExcludeMatchingProperties<TObject, Function>;
+
+type CreateElementOptions<El extends HTMLElement> = Partial<ExcludeMethods<El>>;
 
 class Toggle {
   label: string;
@@ -66,13 +71,22 @@ class Toggle {
     });
   }
   
+  createElement<
+    TagName extends keyof HTMLElementTagNameMap,
+    El extends HTMLElementTagNameMap[TagName] = HTMLElementTagNameMap[TagName],
+  >(
+    tagName: TagName,
+    options: CreateElementOptions<El> = {},
+  ) {
+    return Object.assign(document.createElement(tagName), options);
+  }
+  
   get labelEl(): HTMLLabelElement {
-    if (this.#labelEl)
-      return this.#labelEl;
-    
-    const labelEl: HTMLLabelElement = document.createElement('label');
-    labelEl.append(this.checkboxEl, this.spanEl);
-    return this.#labelEl = labelEl;
+    return this.#labelEl ??= (() => {
+      const labelEl: HTMLLabelElement = this.createElement('label');
+      labelEl.append(this.checkboxEl, this.spanEl);
+      return labelEl;
+    })();
   }
   
   set labelStyle(style: Partial<CSSStyleDeclaration>) {
@@ -80,21 +94,20 @@ class Toggle {
   }
   
   get checkboxEl(): HTMLInputElement {
-    if (this.#checkboxEl)
-      return this.#checkboxEl;
-    
-    const checkboxEl: HTMLInputElement = document.createElement('input');
-    checkboxEl.type = 'checkbox';
-    if (this.autoDisable)
-      checkboxEl.checked = true;
-    
-    checkboxEl.addEventListener('change', (): void => {
-      this.#onChange?.(this.checkboxEl);
-      settings[this.storageName] = checkboxEl.checked;
-      chrome.storage.sync.set(settings);
-    });
-    
-    return this.#checkboxEl = checkboxEl;
+    return this.#checkboxEl ??= (() => {
+      const checkboxEl: HTMLInputElement = this.createElement('input', {
+        type: 'checkbox',
+        checked: this.autoDisable,
+      });
+      
+      checkboxEl.addEventListener('change', (): void => {
+        this.#onChange?.(this.checkboxEl);
+        settings[this.storageName] = checkboxEl.checked;
+        chrome.storage.sync.set(settings);
+      });
+      
+      return checkboxEl;
+    })();
   }
   
   set checkboxStyle(style: Partial<CSSStyleDeclaration>) {
@@ -102,25 +115,21 @@ class Toggle {
   }
   
   get spanEl(): HTMLSpanElement {
-    if (this.#spanEl)
-      return this.#spanEl;
-    
-    const spanEl: HTMLSpanElement = document.createElement('span');
-    spanEl.innerText = `Auto Disable ${this.label}`;
-    return this.#spanEl = spanEl;
-  }
-  
-  get buttonEnabled(): boolean {
-    return this.buttonEl.dataset.isMuted === 'true';
+    return this.#spanEl ??= this.createElement('span', {
+      textContent: `Auto Disable ${this.label}`,
+    });
   }
   
   onChange(callback: ToggleOnChangeCallback): void {
     this.#onChange = callback;
   }
   
+  get disabled(): boolean {
+    return this.buttonEl?.dataset.isMuted === 'true';
+  }
+  
   disable(): void {
-    if (!this.buttonEl) return;
-    if (this.buttonEl.dataset.isMuted === 'false')
+    if (!this.disabled)
       this.buttonEl.click();
   }
   

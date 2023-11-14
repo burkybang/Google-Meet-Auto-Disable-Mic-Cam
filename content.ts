@@ -64,8 +64,8 @@ Promise.all([
   const originalPageTitle: string = document.title;
   
   const observeButtons = () => document.title =
-    (togglesObj.disableMic.buttonEnabled ? `${togglesObj.disableMic.emoji} ` : '') +
-    (togglesObj.disableCam.buttonEnabled ? '' : `${togglesObj.disableCam.emoji} `) +
+    (togglesObj[ToggleStorageName.MIC].disabled ? `${togglesObj[ToggleStorageName.MIC].emoji} ` : '') +
+    (togglesObj[ToggleStorageName.CAM].disabled ? '' : `${togglesObj[ToggleStorageName.CAM].emoji} `) +
     originalPageTitle;
   
   observeButtons();

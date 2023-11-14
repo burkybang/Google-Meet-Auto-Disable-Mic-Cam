@@ -2,8 +2,8 @@ if (typeof browser !== 'undefined')
     chrome = browser;
 const windowLoaded = new Promise(resolve => window.onload = () => resolve());
 const defaultSettings = {
-    disableMic: false,
-    disableCam: true,
+    ["disableMic"]: false,
+    ["disableCam"]: true,
 };
 let settings;
 const settingsLoaded = chrome.storage.sync.get()
@@ -25,50 +25,49 @@ class Toggle {
             autoDisable: settings[options.storageName],
         });
     }
+    createElement(tagName, options = {}) {
+        return Object.assign(document.createElement(tagName), options);
+    }
     get labelEl() {
-        if (this.#labelEl)
-            return this.#labelEl;
-        const labelEl = document.createElement('label');
-        labelEl.append(this.checkboxEl, this.spanEl);
-        return this.#labelEl = labelEl;
+        return this.#labelEl ??= (() => {
+            const labelEl = this.createElement('label');
+            labelEl.append(this.checkboxEl, this.spanEl);
+            return labelEl;
+        })();
     }
     set labelStyle(style) {
         Object.assign(this.labelEl.style, style);
     }
     get checkboxEl() {
-        if (this.#checkboxEl)
-            return this.#checkboxEl;
-        const checkboxEl = document.createElement('input');
-        checkboxEl.type = 'checkbox';
-        if (this.autoDisable)
-            checkboxEl.checked = true;
-        checkboxEl.addEventListener('change', () => {
-            this.#onChange?.(this.checkboxEl);
-            settings[this.storageName] = checkboxEl.checked;
-            chrome.storage.sync.set(settings);
-        });
-        return this.#checkboxEl = checkboxEl;
+        return this.#checkboxEl ??= (() => {
+            const checkboxEl = this.createElement('input', {
+                type: 'checkbox',
+                checked: this.autoDisable,
+            });
+            checkboxEl.addEventListener('change', () => {
+                this.#onChange?.(this.checkboxEl);
+                settings[this.storageName] = checkboxEl.checked;
+                chrome.storage.sync.set(settings);
+            });
+            return checkboxEl;
+        })();
     }
     set checkboxStyle(style) {
         Object.assign(this.checkboxEl.style, style);
     }
     get spanEl() {
-        if (this.#spanEl)
-            return this.#spanEl;
-        const spanEl = document.createElement('span');
-        spanEl.innerText = `Auto Disable ${this.label}`;
-        return this.#spanEl = spanEl;
-    }
-    get buttonEnabled() {
-        return this.buttonEl.dataset.isMuted === 'true';
+        return this.#spanEl ??= this.createElement('span', {
+            textContent: `Auto Disable ${this.label}`,
+        });
     }
     onChange(callback) {
         this.#onChange = callback;
     }
+    get disabled() {
+        return this.buttonEl?.dataset.isMuted === 'true';
+    }
     disable() {
-        if (!this.buttonEl)
-            return;
-        if (this.buttonEl.dataset.isMuted === 'false')
+        if (!this.disabled)
             this.buttonEl.click();
     }
     set checked(checked) {

@@ -49,8 +49,8 @@ Promise.all([
             .forEach(([storageName, { newValue }]) => togglesObj[storageName].checked = newValue));
     const originalPageTitle = document.title;
     const observeButtons = () => document.title =
-        (togglesObj.disableMic.buttonEnabled ? `${togglesObj.disableMic.emoji} ` : '') +
-            (togglesObj.disableCam.buttonEnabled ? '' : `${togglesObj.disableCam.emoji} `) +
+        (togglesObj["disableMic"].disabled ? `${togglesObj["disableMic"].emoji} ` : '') +
+            (togglesObj["disableCam"].disabled ? '' : `${togglesObj["disableCam"].emoji} `) +
             originalPageTitle;
     observeButtons();
     const buttonObserver = new MutationObserver(observeButtons);

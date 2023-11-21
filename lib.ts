@@ -7,16 +7,16 @@ if (typeof browser !== 'undefined')
 
 const windowLoaded: Promise<void> = new Promise(resolve => window.onload = () => resolve());
 
-const enum ToggleStorageName {
+const enum ToggleName {
   MIC = 'disableMic',
   CAM = 'disableCam',
 }
 
-type Settings = Record<ToggleStorageName, boolean>;
+type Settings = Record<ToggleName, boolean>;
 
 const defaultSettings: Settings = {
-  [ToggleStorageName.MIC]: false,
-  [ToggleStorageName.CAM]: true,
+  [ToggleName.MIC]: false,
+  [ToggleName.CAM]: true,
 };
 
 let settings: Settings;
@@ -36,7 +36,7 @@ const enum ToggleEmoji {
 
 type ToggleOptions = {
   label: string;
-  storageName: ToggleStorageName;
+  name: ToggleName;
   key: string;
   direction: ToggleDirection;
   emoji: ToggleEmoji;
@@ -54,7 +54,7 @@ type CreateElementOptions<El extends HTMLElement> = Partial<ExcludeMethods<El>>;
 
 class Toggle {
   label: string;
-  storageName: ToggleStorageName;
+  name: ToggleName;
   key: string;
   direction: ToggleDirection;
   emoji: ToggleEmoji;
@@ -67,7 +67,7 @@ class Toggle {
   
   constructor(options: ToggleOptions) {
     Object.assign(this, options, {
-      autoDisable: settings[options.storageName],
+      autoDisable: settings[options.name],
     });
   }
   
@@ -112,7 +112,7 @@ class Toggle {
       
       checkboxEl.addEventListener('change', (): void => {
         this.#onChange?.(this.checkboxEl);
-        settings[this.storageName] = checkboxEl.checked;
+        settings[this.name] = checkboxEl.checked;
         chrome.storage.sync.set(settings);
       });
       
@@ -150,19 +150,19 @@ class Toggle {
   }
 }
 
-const createToggles = () => <Record<ToggleStorageName, Toggle>>Object.fromEntries(([
+const createToggles = () => <Record<ToggleName, Toggle>>Object.fromEntries(([
   {
     label: 'Microphone',
-    storageName: ToggleStorageName.MIC,
+    name: ToggleName.MIC,
     key: 'd',
     direction: ToggleDirection.RIGHT,
     emoji: ToggleEmoji.MIC,
   },
   {
     label: 'Camera',
-    storageName: ToggleStorageName.CAM,
+    name: ToggleName.CAM,
     key: 'e',
     direction: ToggleDirection.LEFT,
     emoji: ToggleEmoji.CAM,
   },
-] satisfies ToggleOptions[]).map(options => [options.storageName, new Toggle(options)]));
+] satisfies ToggleOptions[]).map(options => [options.name, new Toggle(options)]));

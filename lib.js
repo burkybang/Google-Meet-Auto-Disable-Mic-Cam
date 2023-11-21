@@ -10,7 +10,7 @@ const settingsLoaded = chrome.storage.sync.get()
     .then(storageSettings => settings = ({ ...defaultSettings, ...storageSettings }));
 class Toggle {
     label;
-    storageName;
+    name;
     key;
     direction;
     emoji;
@@ -22,7 +22,7 @@ class Toggle {
     #onChange;
     constructor(options) {
         Object.assign(this, options, {
-            autoDisable: settings[options.storageName],
+            autoDisable: settings[options.name],
         });
     }
     get buttonOnDOM() {
@@ -54,7 +54,7 @@ class Toggle {
             });
             checkboxEl.addEventListener('change', () => {
                 this.#onChange?.(this.checkboxEl);
-                settings[this.storageName] = checkboxEl.checked;
+                settings[this.name] = checkboxEl.checked;
                 chrome.storage.sync.set(settings);
             });
             return checkboxEl;
@@ -87,16 +87,16 @@ class Toggle {
 const createToggles = () => Object.fromEntries(([
     {
         label: 'Microphone',
-        storageName: "disableMic",
+        name: "disableMic",
         key: 'd',
         direction: "right",
         emoji: "\uD83D\uDD07",
     },
     {
         label: 'Camera',
-        storageName: "disableCam",
+        name: "disableCam",
         key: 'e',
         direction: "left",
         emoji: "\uD83D\uDCF7",
     },
-]).map(options => [options.storageName, new Toggle(options)]));
+]).map(options => [options.name, new Toggle(options)]));

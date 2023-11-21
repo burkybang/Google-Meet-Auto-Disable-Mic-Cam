@@ -2,35 +2,45 @@ Promise.all([
   settingsLoaded,
   windowLoaded,
 ]).then(async (): Promise<void> => {
-  const togglesObj: Record<ToggleStorageName, Toggle> = createToggles();
+  const togglesObj: Record<ToggleName, Toggle> = createToggles();
   const toggles: Toggle[] = Object.values(togglesObj);
   
   let originalPageTitle: string;
   let buttonObserver: MutationObserver;
   
-  const observeButtons = () => document.title =
-    (togglesObj[ToggleStorageName.MIC].disabled ? `${togglesObj[ToggleStorageName.MIC].emoji} ` : '') +
-    (togglesObj[ToggleStorageName.CAM].disabled ? '' : `${togglesObj[ToggleStorageName.CAM].emoji} `) +
-    originalPageTitle;
+  const observeButtons = (): void => {
+    if (!originalPageTitle) return;
+    
+    const titleElements: (ToggleEmoji | string)[] = [originalPageTitle];
+    
+    const camToggle: Toggle = togglesObj[ToggleName.CAM];
+    if (!camToggle.disabled)
+      titleElements.unshift(camToggle.emoji);
+    
+    const micToggle: Toggle = togglesObj[ToggleName.MIC];
+    if (micToggle.disabled)
+      titleElements.unshift(micToggle.emoji);
+    
+    document.title = titleElements.join(' ');
+  };
   
-  const isValidStorageName = (storageName: string): storageName is ToggleStorageName => storageName in togglesObj;
+  const isValidStorageName = (name: string): name is ToggleName => name in togglesObj;
   
   const syncStorageListener = (changes: { [p: string]: chrome.storage.StorageChange }) =>
-    Object.entries(changes).forEach(([storageName, {newValue}]): void => {
-      if (isValidStorageName(storageName) && typeof newValue === 'boolean')
-        togglesObj[storageName].checked = newValue;
+    Object.entries(changes).forEach(([name, {newValue}]): void => {
+      if (isValidStorageName(name) && typeof newValue === 'boolean')
+        togglesObj[name].checked = newValue;
     });
   
   const observeNavigation = (): void => {
     if (!toggles.every(toggle => toggle.buttonEl)) return;
     
-    if (!originalPageTitle) {
+    if (!originalPageTitle && document.title && document.title !== 'Meet') {
       originalPageTitle = document.title;
       toggles.forEach(toggle => {
         if (toggle.autoDisable)
           toggle.disable();
       });
-      observeButtons();
     }
     
     const isPreMeeting: boolean = toggles.every(toggle => {
@@ -77,8 +87,8 @@ Promise.all([
     }
   };
   
-  observeNavigation();
-  
   const navigationObserver: MutationObserver = new MutationObserver(observeNavigation);
   navigationObserver.observe(document.body, {childList: true});
+  
+  observeNavigation();
 });

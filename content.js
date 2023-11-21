@@ -6,25 +6,32 @@ Promise.all([
     const toggles = Object.values(togglesObj);
     let originalPageTitle;
     let buttonObserver;
-    const observeButtons = () => document.title =
-        (togglesObj["disableMic"].disabled ? `${togglesObj["disableMic"].emoji} ` : '') +
-            (togglesObj["disableCam"].disabled ? '' : `${togglesObj["disableCam"].emoji} `) +
-            originalPageTitle;
-    const isValidStorageName = (storageName) => storageName in togglesObj;
-    const syncStorageListener = (changes) => Object.entries(changes).forEach(([storageName, { newValue }]) => {
-        if (isValidStorageName(storageName) && typeof newValue === 'boolean')
-            togglesObj[storageName].checked = newValue;
+    const observeButtons = () => {
+        if (!originalPageTitle)
+            return;
+        const titleElements = [originalPageTitle];
+        const camToggle = togglesObj["disableCam"];
+        if (!camToggle.disabled)
+            titleElements.unshift(camToggle.emoji);
+        const micToggle = togglesObj["disableMic"];
+        if (micToggle.disabled)
+            titleElements.unshift(micToggle.emoji);
+        document.title = titleElements.join(' ');
+    };
+    const isValidStorageName = (name) => name in togglesObj;
+    const syncStorageListener = (changes) => Object.entries(changes).forEach(([name, { newValue }]) => {
+        if (isValidStorageName(name) && typeof newValue === 'boolean')
+            togglesObj[name].checked = newValue;
     });
     const observeNavigation = () => {
         if (!toggles.every(toggle => toggle.buttonEl))
             return;
-        if (!originalPageTitle) {
+        if (!originalPageTitle && document.title && document.title !== 'Meet') {
             originalPageTitle = document.title;
             toggles.forEach(toggle => {
                 if (toggle.autoDisable)
                     toggle.disable();
             });
-            observeButtons();
         }
         const isPreMeeting = toggles.every(toggle => {
             const buttonIsDiv = toggle.buttonEl.tagName === 'DIV';
@@ -64,7 +71,7 @@ Promise.all([
             toggles.forEach(toggle => buttonObserver.observe(toggle.buttonEl, { attributes: true }));
         }
     };
-    observeNavigation();
     const navigationObserver = new MutationObserver(observeNavigation);
     navigationObserver.observe(document.body, { childList: true });
+    observeNavigation();
 });

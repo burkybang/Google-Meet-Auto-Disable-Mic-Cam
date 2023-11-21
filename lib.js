@@ -15,7 +15,7 @@ class Toggle {
     direction;
     emoji;
     autoDisable;
-    buttonEl;
+    #buttonEl;
     #labelEl;
     #checkboxEl;
     #spanEl;
@@ -24,6 +24,14 @@ class Toggle {
         Object.assign(this, options, {
             autoDisable: settings[options.storageName],
         });
+    }
+    get buttonOnDOM() {
+        return this.#buttonEl?.isConnected ?? false;
+    }
+    get buttonEl() {
+        return this.buttonOnDOM ?
+            this.#buttonEl :
+            this.#buttonEl = document.querySelector(`[role="button"][aria-label$=" + ${this.key})" i][data-is-muted]`);
     }
     createElement(tagName, options = {}) {
         return Object.assign(document.createElement(tagName), options);
@@ -64,11 +72,11 @@ class Toggle {
         this.#onChange = callback;
     }
     get disabled() {
-        return this.buttonEl?.dataset.isMuted === 'true';
+        return this.#buttonEl?.dataset.isMuted === 'true';
     }
     disable() {
         if (!this.disabled)
-            this.buttonEl.click();
+            this.#buttonEl?.click();
     }
     set checked(checked) {
         this.checkboxEl.checked = checked;
@@ -76,7 +84,7 @@ class Toggle {
             this.disable();
     }
 }
-const createToggles = () => Object.fromEntries([
+const createToggles = () => Object.fromEntries(([
     {
         label: 'Microphone',
         storageName: "disableMic",
@@ -91,4 +99,4 @@ const createToggles = () => Object.fromEntries([
         direction: "left",
         emoji: "\uD83D\uDCF7",
     },
-].map(options => [options.storageName, new Toggle(options)]));
+]).map(options => [options.storageName, new Toggle(options)]));

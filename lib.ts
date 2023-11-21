@@ -59,7 +59,7 @@ class Toggle {
   direction: ToggleDirection;
   emoji: ToggleEmoji;
   autoDisable: boolean;
-  buttonEl: HTMLDivElement;
+  #buttonEl: HTMLDivElement | HTMLButtonElement;
   #labelEl: HTMLLabelElement;
   #checkboxEl: HTMLInputElement;
   #spanEl: HTMLSpanElement;
@@ -69,6 +69,16 @@ class Toggle {
     Object.assign(this, options, {
       autoDisable: settings[options.storageName],
     });
+  }
+  
+  get buttonOnDOM(): boolean {
+    return this.#buttonEl?.isConnected ?? false;
+  }
+  
+  get buttonEl(): HTMLDivElement | HTMLButtonElement {
+    return this.buttonOnDOM ?
+      this.#buttonEl :
+      this.#buttonEl = document.querySelector<HTMLDivElement | HTMLButtonElement>(`[role="button"][aria-label$=" + ${this.key})" i][data-is-muted]`);
   }
   
   createElement<
@@ -125,12 +135,12 @@ class Toggle {
   }
   
   get disabled(): boolean {
-    return this.buttonEl?.dataset.isMuted === 'true';
+    return this.#buttonEl?.dataset.isMuted === 'true';
   }
   
   disable(): void {
     if (!this.disabled)
-      this.buttonEl.click();
+      this.#buttonEl?.click();
   }
   
   set checked(checked: boolean) {
@@ -155,4 +165,4 @@ const createToggles = () => <Record<ToggleStorageName, Toggle>>Object.fromEntrie
     direction: ToggleDirection.LEFT,
     emoji: ToggleEmoji.CAM,
   },
-] as ToggleOptions[]).map(options => [options.storageName, new Toggle(options)]));
+] satisfies ToggleOptions[]).map(options => [options.storageName, new Toggle(options)]));

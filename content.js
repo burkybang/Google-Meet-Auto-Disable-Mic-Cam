@@ -6,6 +6,7 @@ Promise.all([
     const toggles = Object.values(togglesObj);
     let originalPageTitle;
     let buttonObserver;
+    let titleChangeTimerUp = false;
     const observeButtons = () => {
         if (!originalPageTitle)
             return;
@@ -26,7 +27,7 @@ Promise.all([
     const observeNavigation = () => {
         if (!toggles.every(toggle => toggle.buttonEl))
             return;
-        if (!originalPageTitle && document.title && document.title !== 'Meet') {
+        if (!originalPageTitle && document.title && (document.title !== 'Meet' || titleChangeTimerUp)) {
             originalPageTitle = document.title;
             toggles.forEach(toggle => {
                 if (toggle.autoDisable)
@@ -74,4 +75,5 @@ Promise.all([
     const navigationObserver = new MutationObserver(observeNavigation);
     navigationObserver.observe(document.body, { childList: true });
     observeNavigation();
+    setTimeout(() => titleChangeTimerUp = true, 500);
 });

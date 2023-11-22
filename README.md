@@ -7,7 +7,7 @@
 ## Description [<img src="https://raw.githubusercontent.com/burkybang/Google-Meet-Auto-Disable-Camera/master/icon/icon128.png" align="right" width="128" height="128"/>](https://chrome.google.com/webstore/detail/dgggcpmnponfpgnifbdohajbdkbgjlhd)
 
 This simple extension provides options to default your microphone and camera to disabled. It also displays emojis in the tab title
-indicating if your microphone is muted or you camera is on.
+indicating if your microphone is muted or your camera is on.
 
 [![Chrome Extension Version](https://img.shields.io/chrome-web-store/v/dgggcpmnponfpgnifbdohajbdkbgjlhd?label=version&logo=google-chrome&logoColor=ffce43)](https://chrome.google.com/webstore/detail/dgggcpmnponfpgnifbdohajbdkbgjlhd)
 [![Chrome Extension Users](https://img.shields.io/endpoint?url=https%3A%2F%2Fburkybang.com%2Fchrome_extension_users%2F%3Faction%3Dget%26id%3Ddgggcpmnponfpgnifbdohajbdkbgjlhd%26output%3Dshields-io%26number-only%3D1&logoColor=ffce43)](https://chrome.google.com/webstore/detail/dgggcpmnponfpgnifbdohajbdkbgjlhd)

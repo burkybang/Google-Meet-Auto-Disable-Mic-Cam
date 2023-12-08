@@ -38,10 +38,7 @@ Promise.all([
     
     if (!originalPageTitle && document.title && (document.title !== 'Meet' || titleChangeTimerUp)) {
       originalPageTitle = document.title;
-      toggles.forEach(toggle => {
-        if (toggle.autoDisable)
-          toggle.disable();
-      });
+      setTimeout(() => toggles.forEach(toggle => toggle.autoDisable && toggle.disable()), 500);
     }
     
     const isPreMeeting: boolean = toggles.every(toggle => {

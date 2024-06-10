@@ -37,7 +37,7 @@ const enum ToggleEmoji {
 type ToggleOptions = {
   label: string;
   name: ToggleName;
-  key: string;
+  index: number;
   direction: ToggleDirection;
   emoji: ToggleEmoji;
 };
@@ -55,7 +55,7 @@ type CreateElementOptions<El extends HTMLElement> = Partial<ExcludeMethods<El>>;
 class Toggle {
   label: string;
   name: ToggleName;
-  key: string;
+  index: number;
   direction: ToggleDirection;
   emoji: ToggleEmoji;
   autoDisable: boolean;
@@ -78,7 +78,7 @@ class Toggle {
   get buttonEl(): HTMLDivElement | HTMLButtonElement {
     return this.buttonOnDOM ?
       this.#buttonEl :
-      this.#buttonEl = document.querySelector<HTMLDivElement | HTMLButtonElement>(`[role="button"][aria-label$=" + ${this.key})" i][data-is-muted]`);
+      this.#buttonEl = document.querySelectorAll<HTMLDivElement | HTMLButtonElement>(`[role="button"][data-is-muted]`)[this.index];
   }
   
   createElement<
@@ -154,14 +154,14 @@ const createToggles = () => <Record<ToggleName, Toggle>>Object.fromEntries(([
   {
     label: 'Microphone',
     name: ToggleName.MIC,
-    key: 'd',
+    index: 0,
     direction: ToggleDirection.RIGHT,
     emoji: ToggleEmoji.MIC,
   },
   {
     label: 'Camera',
     name: ToggleName.CAM,
-    key: 'e',
+    index: 1,
     direction: ToggleDirection.LEFT,
     emoji: ToggleEmoji.CAM,
   },

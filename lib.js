@@ -11,7 +11,7 @@ const settingsLoaded = chrome.storage.sync.get()
 class Toggle {
     label;
     name;
-    key;
+    index;
     direction;
     emoji;
     autoDisable;
@@ -31,7 +31,7 @@ class Toggle {
     get buttonEl() {
         return this.buttonOnDOM ?
             this.#buttonEl :
-            this.#buttonEl = document.querySelector(`[role="button"][aria-label$=" + ${this.key})" i][data-is-muted]`);
+            this.#buttonEl = document.querySelectorAll(`[role="button"][data-is-muted]`)[this.index];
     }
     createElement(tagName, options = {}) {
         return Object.assign(document.createElement(tagName), options);
@@ -88,14 +88,14 @@ const createToggles = () => Object.fromEntries(([
     {
         label: 'Microphone',
         name: "disableMic",
-        key: 'd',
+        index: 0,
         direction: "right",
         emoji: "\uD83D\uDD07",
     },
     {
         label: 'Camera',
         name: "disableCam",
-        key: 'e',
+        index: 1,
         direction: "left",
         emoji: "\uD83D\uDCF7",
     },

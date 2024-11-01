@@ -69,8 +69,7 @@ Promise.all([
             toggles.forEach(toggle => buttonObserver.observe(toggle.buttonEl, { attributes: true }));
         }
     };
-    const navigationObserver = new MutationObserver(observeNavigation);
-    navigationObserver.observe(document.body, { childList: true });
+    new MutationObserver(observeNavigation).observe(document.head, { childList: true });
     observeNavigation();
     setTimeout(() => titleChangeTimerUp = true, 500);
 });

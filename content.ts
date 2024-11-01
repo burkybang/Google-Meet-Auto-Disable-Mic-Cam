@@ -85,8 +85,7 @@ Promise.all([
     }
   };
   
-  const navigationObserver: MutationObserver = new MutationObserver(observeNavigation);
-  navigationObserver.observe(document.body, {childList: true});
+  new MutationObserver(observeNavigation).observe(document.head, {childList: true});
   
   observeNavigation();
   

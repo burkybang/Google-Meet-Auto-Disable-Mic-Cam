@@ -84,7 +84,7 @@ class Toggle {
             this.disable();
     }
 }
-const createToggles = () => Object.fromEntries(([
+const createToggles = () => Object.fromEntries([
     {
         label: 'Microphone',
         name: "disableMic",
@@ -99,4 +99,4 @@ const createToggles = () => Object.fromEntries(([
         direction: "left",
         emoji: "\uD83D\uDCF7",
     },
-]).map(options => [options.name, new Toggle(options)]));
+].map(options => [options.name, new Toggle(options)]));
